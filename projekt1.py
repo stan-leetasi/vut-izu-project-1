@@ -193,7 +193,7 @@ def visualize_iteration(OpenStr, ClosedStr, OC:bool):
             return
     else:
         return
-
+    print()
     # Parse input and extract coordinates
     open_axis = []
     closed_axis = []
@@ -273,7 +273,6 @@ while True:
     ClosedString = add_nodes(Closed)
     print(f"Open: {OpenString}")
     print(f"Closed: {ClosedString}")
-    print()
     iterationCounter += 1
     visualize_iteration(OpenString, ClosedString, True)
 

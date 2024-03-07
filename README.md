@@ -24,12 +24,14 @@ data = """
 8 8 6 7 Z 9 9 9 9 9
 8 8 8 8 Z 9 7 7 8 9
 """
+# Z - wall, cannot traverse
+# Number value - cost of traversal to the coordinate
 
 # Starting point for traversal
-start_c = Coordinates(6,2) #location    
+start_c = Coordinates(6,2) #insert your start location    
 
 # Goal point for traversal
-goal_c = Coordinates(3,5) #location 
+goal_c = Coordinates(3,5) #insert your goal location
 ```
 ## Example output
 ```
@@ -94,6 +96,7 @@ Closed: ([6, 2], 0, NULL), ([6, 3], 4, [6, 2]), ([5, 4], 7, [6, 3]), ([6, 4], 7,
 
 Optimal traversal cost: 16
 [6, 2], [6, 3], [5, 4], [4, 3], [3, 4], [3, 5]
+
   0 1 2 3 4 5 6 7 8 9
 0
 1
