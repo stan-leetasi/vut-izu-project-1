@@ -21,6 +21,7 @@ class Node:
 
 ######################################################################################
 # Place your input here
+# Data field must be in a rectangular grid
 data = """
 7 7 7 5 Z 8 7 8 7 9
 6 6 5 7 Z Z Z Z 7 8
@@ -37,7 +38,7 @@ data = """
 # Other - cost of traversal to the coordinate
 
 # Starting point for traversal
-start_c = Coordinates(6,2) #location    
+start_c = Coordinates(8,2) #location    
 start_p = Coordinates(0,0) #parent coordinates (leave as 0)
 start = Node(start_c, 0, start_p)
 
@@ -54,8 +55,8 @@ inverse_data = ""
 # Transpose input
 x = 0
 y = 0
-while y < len(input):
-    while x < len(input[0]):
+while y < len(input[0]):
+    while x < len(input):
         inverse_data += str(input[x][y]) + " "
         x += 1
 
@@ -118,12 +119,12 @@ def close_node(index):
 
 def open_node(shiftX:int, shiftY:int, parentCost:int, parentX:int, parentY:int ):
     """Explore a new node"""
-    node_cord = Coordinates(parentX + shiftX , parentY + shiftY)
+    node_cord = Coordinates(parentX + shiftX, parentY + shiftY)
 
     # Test if node is not out of bounds
-    if (node_cord.x > 9 or 
+    if (node_cord.x > len(input)-1 or 
         node_cord.x < 0 or 
-        node_cord.y > 9 or 
+        node_cord.y > len(input[0])-1 or 
         node_cord.y < 0):
         return
     
@@ -210,7 +211,7 @@ def visualize_iteration(OpenStr, ClosedStr, OC:bool):
             x, y = map(int, node_text)
             closed_axis.append((x, y))
 
-    field = [[" " for _ in range(10)] for _ in range(10)]
+    field = [[" " for _ in range(len(input))] for _ in range(len(input[0]))]
 
     # Mark coordinates of optimal path
     if OC == False:
@@ -231,14 +232,14 @@ def visualize_iteration(OpenStr, ClosedStr, OC:bool):
 
     # Print column indices
     print(" ", end=" ")
-    for col in range(10):
+    for col in range(len(input)):
         print(col, end=" ")
     print()
 
     # Print field with row indices
-    for row in range(10):
+    for row in range(len(input[0])):
         print(row, end=" ")
-        for col in range(10):
+        for col in range(len(input)):
             print(field[row][col], end=" ")
         print()
 

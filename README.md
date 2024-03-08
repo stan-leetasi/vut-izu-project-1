@@ -12,6 +12,7 @@ Insert your data here:
 
 ```python
 # Place your input here
+# Data field must be in a rectangular grid
 data = """
 7 7 7 5 Z 8 7 8 7 9
 6 6 5 7 Z Z Z Z 7 8
